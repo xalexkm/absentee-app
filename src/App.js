@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Wrapper>
-      <div className="w-full rounded-md bg-slate-400 p-4">
+      <div className="w-full rounded-md p-4">
           {
               isError && <div className={'p-4 bg-slate-200'}>{ error }</div>
           }

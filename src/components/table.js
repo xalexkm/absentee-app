@@ -55,31 +55,31 @@ export default function Table({ data }) {
 
     return (
         <>
-            {
-                isFiltered && <Button onClick={() => handleBackClick()}>Go Back</Button>
-            }
-            <table className="table">
-                <thead className="table-header-group">
-                <tr className="table-row">
+            <div className="table">
+                <div className="table-header-group">
+                <div className="table-row">
                     <th className={'table-cell'}><div onClick={() => handleSort('name')} className="flex justify-center items-center">Name { sortedColumn === 'name' && <IoArrowDownOutline/>}</div></th>
                     <th className={'table-cell'}><div onClick={() => handleSort('absenceType')} className="flex gap-2 justify-center items-center">Absence Type { sortedColumn === 'absenceType' && <IoArrowDownOutline/>}</div></th>
-                    <th className={'table-cell text-xs max-w-32'}>Approved/Pending Approval</th>
+                    <th className={'table-cell text-xs max-w-32'}><div>Approved/Pending Approval</div></th>
                     <th className={'table-cell'}><div onClick={() => handleSort('startDate')} className="flex gap-2 justify-center items-center">Start Date { sortedColumn === 'startDate' && <IoArrowDownOutline/>}</div></th>
                     <th className={'table-cell'}><div onClick={() => handleSort('endDate')} className="flex gap-2 justify-center items-center">End Date { sortedColumn === 'endDate' && <IoArrowDownOutline/>}</div></th>
-                </tr>
-                </thead>
-                <tbody className="table-row-group">
+                </div>
+                </div>
+                <div className="table-row-group">
                 {view.map((row, index) => (
-                    <tr className="table-row" key={index}>
-                        <td className="table-cell text-start" onClick={() => handleNameClick(row.employee.id)}><div className="flex gap-2 items-center">{row.employee.firstName} {row.employee.lastName} <AbsenceConflictLabel employeeId={row.employee.id}></AbsenceConflictLabel></div></td>
+                    <div className="table-row" key={index}>
+                        <div className="table-cell text-start" onClick={() => handleNameClick(row.employee.id)}><div className="flex gap-2 items-center">{row.employee.firstName} {row.employee.lastName} <AbsenceConflictLabel employeeId={row.employee.id}></AbsenceConflictLabel></div></div>
                         <td className="table-cell">{row.absenceType ? absenceTypeMap[row.absenceType] : "N/A"}</td>
                         <td className="table-cell">{row.approved ? 'Approved' : 'Pending Approval'}</td>
                         <td className="table-cell">{row.startDate ? new Date(row.startDate).toDateString() : "N/A"}</td>
                         <td className="table-cell">{row.endDate ? new Date(row.endDate).toDateString() : "N/A"}</td>
-                    </tr>
+                    </div>
                 ))}
-                </tbody>
-            </table>
+                </div>
+            </div>
+            {
+                isFiltered && <div className="w-40 ml-auto my-4"><Button onClick={() => handleBackClick()}>Go Back</Button></div>
+            }
         </>
     );
 }
