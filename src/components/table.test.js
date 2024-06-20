@@ -54,4 +54,17 @@ describe('Table Component', () => {
         expect(screen.getAllByText('Jabez Nasser').length).toBe(2)
         expect(screen.queryByText('Amiah Fenton')).not.toBeInTheDocument();
     });
+    test('should return to default view on click of Go Back button', () => {
+        render(<Table data={mockData} />);
+
+        fireEvent.click(screen.getAllByText('Jabez Nasser')[0]);
+
+        expect(screen.getAllByText('Jabez Nasser').length).toBe(2)
+        expect(screen.queryByText('Amiah Fenton')).not.toBeInTheDocument();
+
+        fireEvent.click(screen.getByText('Go Back'));
+
+        expect(screen.getAllByText('Jabez Nasser').length).toBe(2);
+        expect(screen.getByText('Amiah Fenton')).toBeInTheDocument();
+    })
 });
