@@ -1,6 +1,13 @@
+import {useState} from "react";
 
 
 export default function Table({ data }) {
+    const [view, setView] = useState(data);
+    const onNameClick = (id) => {
+        const filteredView = data.filter((employee) => employee.employee.id === id)
+        setView(filteredView)
+    }
+
     return (
         <table className="table">
             <thead className="table-header-group">
@@ -13,9 +20,9 @@ export default function Table({ data }) {
             </tr>
             </thead>
             <tbody className="table-row-group">
-            {data.map((row, index) => (
+            {view.map((row, index) => (
                 <tr className="table-row" key={index}>
-                    <td className="table-cell">{row.employee.firstName} {row.employee.lastName}</td>
+                    <td className="table-cell" onClick={() => onNameClick(row.employee.id)}>{row.employee.firstName} {row.employee.lastName}</td>
                     <td className="table-cell">{row.absenceType}</td>
                     <td className="table-cell">{row.approved ? 'True' : 'False'}</td>
                     <td className="table-cell">{row.startDate}</td>
