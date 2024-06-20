@@ -36,8 +36,6 @@ export const getAbsenceConflict = async (employeeId) => {
 
         const data = await response.json();
 
-        console.log(data)
-
         return data;
     } catch (error) {
         console.error('Error fetching absence data:', error);
