@@ -1,6 +1,11 @@
 import {useState} from "react";
 import {IoArrowDownOutline} from "react-icons/io5";
 
+const absenceTypeMap = {
+    "ANNUAL_LEAVE": "Annual Leave",
+    "SICKNESS": "Sickness",
+    "MEDICAL": "Medical"
+}
 
 export default function Table({ data }) {
     const [view, setView] = useState(data);
@@ -65,7 +70,7 @@ export default function Table({ data }) {
                 {view.map((row, index) => (
                     <tr className="table-row" key={index}>
                         <td className="table-cell text-start" onClick={() => onNameClick(row.employee.id)}>{row.employee.firstName} {row.employee.lastName}</td>
-                        <td className="table-cell">{row.absenceType ? row.absenceType : "N/A"}</td>
+                        <td className="table-cell">{row.absenceType ? absenceTypeMap[row.absenceType] : "N/A"}</td>
                         <td className="table-cell">{row.approved ? 'Approved' : 'Pending Approval'}</td>
                         <td className="table-cell">{row.startDate ? new Date(row.startDate).toDateString() : "N/A"}</td>
                         <td className="table-cell">{row.endDate ? new Date(row.endDate).toDateString() : "N/A"}</td>

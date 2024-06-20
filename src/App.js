@@ -3,10 +3,6 @@ import {getAbsenceData} from "./lib/api";
 import Wrapper from "./components/wrapper";
 import Table from "./components/table";
 
-const AbsenceTypeMap = {
-    "ANNUAL_LEAVE": "Annual Leave"
-}
-
 function App() {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["absence-data"],
