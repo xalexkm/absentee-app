@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.table {
+    @apply border border-slate-600 text-center;
+}
+
+.table .table-header-group {
+    @apply p-2;
+}
+.table .table-header-group .table-cell {
+    @apply p-2;
+}
+
+.table .table-row-group {
+    @apply p-2;
+}
+
+.table .table-row-group .table-cell {
+    @apply p-1;
+}
+
+
