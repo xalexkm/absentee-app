@@ -10,7 +10,7 @@
     @apply p-2;
 }
 .table .table-header-group .table-cell {
-    @apply p-2;
+    @apply p-2 min-w-40;
 }
 
 .table .table-row-group {
