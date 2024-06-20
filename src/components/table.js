@@ -1,5 +1,6 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {IoArrowDownOutline} from "react-icons/io5";
+import AbsenceConflictLabel from "./absenceConflictLabel";
 
 const absenceTypeMap = {
     "ANNUAL_LEAVE": "Annual Leave",
@@ -12,18 +13,18 @@ export default function Table({ data }) {
     const [isFiltered, setIsFiltered] = useState(false);
     const [sortedColumn, setSortedColumn] = useState(null)
 
-    const onNameClick = (id) => {
+    const handleNameClick = useCallback((id) => {
         const filteredView = data.filter((employee) => employee.employee.id === id)
         setView(filteredView);
         setIsFiltered(true);
-    }
+    }, [data])
 
-    const handleBackClick = () => {
+    const handleBackClick = useCallback(() => {
         setView(data);
         setIsFiltered(false);
-    }
+    }, [data])
 
-    const handleSort = (sortingProp) => {
+    const handleSort = useCallback((sortingProp) => {
         setSortedColumn(sortingProp);
         const sortedView = [...view].sort((a, b) => {
             let aVal
@@ -49,7 +50,7 @@ export default function Table({ data }) {
         });
 
         setView(sortedView)
-    }
+    }, [view])
 
     return (
         <>
@@ -69,7 +70,7 @@ export default function Table({ data }) {
                 <tbody className="table-row-group">
                 {view.map((row, index) => (
                     <tr className="table-row" key={index}>
-                        <td className="table-cell text-start" onClick={() => onNameClick(row.employee.id)}>{row.employee.firstName} {row.employee.lastName}</td>
+                        <td className="table-cell text-start" onClick={() => handleNameClick(row.employee.id)}><div className="flex gap-2 items-center">{row.employee.firstName} {row.employee.lastName} <AbsenceConflictLabel employeeId={row.employee.id}></AbsenceConflictLabel></div></td>
                         <td className="table-cell">{row.absenceType ? absenceTypeMap[row.absenceType] : "N/A"}</td>
                         <td className="table-cell">{row.approved ? 'Approved' : 'Pending Approval'}</td>
                         <td className="table-cell">{row.startDate ? new Date(row.startDate).toDateString() : "N/A"}</td>
