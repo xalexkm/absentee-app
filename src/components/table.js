@@ -58,17 +58,17 @@ export default function Table({ data }) {
             <div className="table">
                 <div className="table-header-group">
                 <div className="table-row">
-                    <div className={'table-cell'}><div onClick={() => handleSort('name')} className="flex justify-center items-center">Name { sortedColumn === 'name' && <IoArrowDownOutline/>}</div></div>
-                    <div className={'table-cell'}><div onClick={() => handleSort('absenceType')} className="flex gap-2 justify-center items-center">Absence Type { sortedColumn === 'absenceType' && <IoArrowDownOutline/>}</div></div>
+                    <div className={'table-cell'}><div onClick={() => handleSort('name')} className="flex justify-center items-center underline underline-offset-1 cursor-pointer">Name { sortedColumn === 'name' && <IoArrowDownOutline/>}</div></div>
+                    <div className={'table-cell'}><div onClick={() => handleSort('absenceType')} className="flex gap-2 justify-center items-center underline underline-offset-1 cursor-pointer">Absence Type { sortedColumn === 'absenceType' && <IoArrowDownOutline/>}</div></div>
                     <div className={'table-cell text-xs max-w-32'}><div>Approved/Pending Approval</div></div>
-                    <div className={'table-cell'}><div onClick={() => handleSort('startDate')} className="flex gap-2 justify-center items-center">Start Date { sortedColumn === 'startDate' && <IoArrowDownOutline/>}</div></div>
-                    <div className={'table-cell'}><div onClick={() => handleSort('endDate')} className="flex gap-2 justify-center items-center">End Date { sortedColumn === 'endDate' && <IoArrowDownOutline/>}</div></div>
+                    <div className={'table-cell'}><div onClick={() => handleSort('startDate')} className="flex gap-2 justify-center items-center underline underline-offset-1 cursor-pointer">Start Date { sortedColumn === 'startDate' && <IoArrowDownOutline/>}</div></div>
+                    <div className={'table-cell'}><div onClick={() => handleSort('endDate')} className="flex gap-2 justify-center items-center underline underline-offset-1 cursor-pointer">End Date { sortedColumn === 'endDate' && <IoArrowDownOutline/>}</div></div>
                 </div>
                 </div>
                 <div className="table-row-group">
                 {view.map((row, index) => (
                     <div className="table-row" key={index}>
-                        <div className="table-cell text-start" onClick={() => handleNameClick(row.employee.id)}><div className="flex gap-2 items-center">{row.employee.firstName} {row.employee.lastName} <AbsenceConflictLabel employeeId={row.employee.id}></AbsenceConflictLabel></div></div>
+                        <div className="table-cell text-start" onClick={() => handleNameClick(row.employee.id)}><div className="flex gap-2 items-center"><span className="underline underline-offset-1 cursor-pointer">{row.employee.firstName} {row.employee.lastName}</span> <AbsenceConflictLabel employeeId={row.employee.id}></AbsenceConflictLabel></div></div>
                         <div className="table-cell">{row.absenceType ? absenceTypeMap[row.absenceType] : "N/A"}</div>
                         <div className="table-cell">{row.approved ? 'Approved' : 'Pending Approval'}</div>
                         <div className="table-cell">{row.startDate ? new Date(row.startDate).toDateString() : "N/A"}</div>
