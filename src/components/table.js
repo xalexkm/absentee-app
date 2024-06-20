@@ -1,6 +1,7 @@
 import {useCallback, useState} from "react";
 import {IoArrowDownOutline} from "react-icons/io5";
 import AbsenceConflictLabel from "./absenceConflictLabel";
+import Button from "./button";
 
 const absenceTypeMap = {
     "ANNUAL_LEAVE": "Annual Leave",
@@ -55,7 +56,7 @@ export default function Table({ data }) {
     return (
         <>
             {
-                isFiltered && <button className="p-4" onClick={() => handleBackClick()}>Go Back</button>
+                isFiltered && <Button onClick={() => handleBackClick()}>Go Back</Button>
             }
             <table className="table">
                 <thead className="table-header-group">
