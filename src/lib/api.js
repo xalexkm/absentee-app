@@ -1,3 +1,4 @@
+import { addDaysToDate } from '../utils'
 
 export const getAbsenceData = async () => {
     try {
@@ -8,7 +9,13 @@ export const getAbsenceData = async () => {
         }
 
         const data = await response.json();
-        return data;
+
+        const sanitizedData = data.map((item) => ({
+            ...item,
+            endDate: item.startDate ? addDaysToDate(item.startDate, item.days) : null
+        }))
+
+        return sanitizedData;
     } catch (error) {
         console.error('Error fetching absence data:', error);
         throw error;
