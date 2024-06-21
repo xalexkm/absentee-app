@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "watch:css": "tailwindcss -o ./src/output.css --watch",
+    "watch:css": "tailwindcss -o src/styles/output.css --watch",
     "build:css": "tailwindcss",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

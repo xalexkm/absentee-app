@@ -13,8 +13,8 @@ function App() {
   return (
     <Wrapper>
       <div className="w-full rounded-md p-4">
-        {isError && <ErrorNotification message={error}></ErrorNotification>}
-        {!isLoading && data && !isError && <Table data={data}></Table>}
+        {(isError && error && error.message) && <ErrorNotification message={error.message}></ErrorNotification>}
+        {(!isLoading && data && !isError) && <Table data={data}></Table>}
       </div>
     </Wrapper>
   );
