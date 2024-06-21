@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Table from './Table';
+import AppQueryProvider from "../providers/queryProvider";
 
 const mockData = [
     {
@@ -44,7 +45,7 @@ const mockData = [
 
 describe('Table Component', () => {
     test('should filter view on name click', () => {
-        render(<Table data={mockData} />);
+        render(<Table data={mockData} />, { wrapper: AppQueryProvider });
 
         expect(screen.getAllByText('Jabez Nasser').length).toBe(2);
         expect(screen.getByText('Amiah Fenton')).toBeInTheDocument();
@@ -55,7 +56,7 @@ describe('Table Component', () => {
         expect(screen.queryByText('Amiah Fenton')).not.toBeInTheDocument();
     });
     test('should return to default view on click of Go Back button', () => {
-        render(<Table data={mockData} />);
+        render(<Table data={mockData}/>, { wrapper: AppQueryProvider });
 
         fireEvent.click(screen.getAllByText('Jabez Nasser')[0]);
 
