@@ -1,8 +1,8 @@
 function addDaysToDate(dateString, days) {
-    const date = new Date(dateString);
-    date.setDate(date.getDate() + days);
+  const date = new Date(dateString);
+  date.setDate(date.getDate() + days);
 
-    return date.toISOString();
+  return date.toISOString();
 }
 
-export { addDaysToDate }
+export { addDaysToDate };

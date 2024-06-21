@@ -3,27 +3,25 @@
 @tailwind utilities;
 
 .table {
-    @apply w-full text-center box-content border-collapse;
+  @apply w-full text-center box-content border-collapse;
 }
 
 .table .table-header-group {
-    @apply bg-gray-200;
+  @apply bg-gray-200;
 }
 
 .table .table-header-group .table-cell {
-    @apply p-3 border border-gray-300 font-semibold align-middle;
+  @apply p-3 border border-gray-300 font-semibold align-middle;
 }
 
 .table .table-row-group {
-    @apply bg-white;
+  @apply bg-white;
 }
 
 .table .table-row-group .table-cell {
-    @apply p-3 border border-gray-300;
+  @apply p-3 border border-gray-300;
 }
 
 .table .table-row:hover {
-    @apply bg-gray-100;
+  @apply bg-gray-100;
 }
-
-
