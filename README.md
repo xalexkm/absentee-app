@@ -12,7 +12,7 @@ Project at the 3 hours mark (all functionality, limited design)
 
 #### feat/redesign branch
 
-Project at the 3.5 hours mark with redesign and bug fixing
+Project at the 4 hours mark with redesign and bug fixing
 
 ## Available Scripts
 
